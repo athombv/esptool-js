@@ -643,6 +643,8 @@ export class ESPLoader {
     }
     let lastError = "";
 
+    if (mode === "no_reset") return lastError;
+
     for (let i = 0; i < 5; i++) {
       try {
         this.debug(`Sync connect attempt ${i}`);
@@ -697,16 +699,18 @@ export class ESPLoader {
     let resp;
     this.info("Connecting...", false);
     await this.transport.connect(this.romBaudrate, this.serialOptions);
-    const resetSequences = this.constructResetSequency();
-    for (let i = 0; i < attempts; i++) {
-      const resetSequence = resetSequences[i % resetSequences.length];
-      resp = await this._connectAttempt(mode, resetSequence);
-      if (resp === "success") {
-        break;
+    if (mode !== "no_reset") {
+      const resetSequences = this.constructResetSequency();
+      for (let i = 0; i < attempts; i++) {
+        const resetSequence = resetSequences[i % resetSequences.length];
+        resp = await this._connectAttempt(mode, resetSequence);
+        if (resp === "success") {
+          break;
+        }
       }
-    }
-    if (resp !== "success") {
-      throw new ESPError("Failed to connect with the device");
+      if (resp !== "success") {
+        throw new ESPError("Failed to connect with the device");
+      }
     }
     this.debug("Connect attempt successful.");
     this.info("\n\r", false);

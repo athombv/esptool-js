@@ -1,10 +1,11 @@
 {
-  "name": "esptool-js",
+  "name": "@athombv/esptool-js",
   "version": "0.5.2",
   "module": "lib/index.js",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "license": "Apache-2.0",
+  "type": "module",
   "files": [
     "lib",
     "bundle.js"
