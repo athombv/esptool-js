@@ -17,42 +17,44 @@ export interface Stub {
  * @returns {Stub} Stub information and decoded text and data
  */
 export async function getStubJsonByChipName(chipName: string) {
-  let jsonStub;
+  let jsonStub: any;
   switch (chipName) {
     case "ESP32":
-      jsonStub = await import("./targets/stub_flasher/stub_flasher_32.json");
+      jsonStub = (await import("./targets/stub_flasher/stub_flasher_32.js")).default;
       break;
     case "ESP32-C2":
-      jsonStub = await import("./targets/stub_flasher/stub_flasher_32c2.json");
+      jsonStub = (await import("./targets/stub_flasher/stub_flasher_32c2.js")).default;
       break;
     case "ESP32-C3":
-      jsonStub = await import("./targets/stub_flasher/stub_flasher_32c3.json");
+      jsonStub = (await import("./targets/stub_flasher/stub_flasher_32c3.js")).default;
       break;
     case "ESP32-C5":
-      jsonStub = await import("./targets/stub_flasher/stub_flasher_32c5.json");
+      jsonStub = (await import("./targets/stub_flasher/stub_flasher_32c5.js")).default;
       break;
     case "ESP32-C6":
-      jsonStub = await import("./targets/stub_flasher/stub_flasher_32c6.json");
+      jsonStub = (await import("./targets/stub_flasher/stub_flasher_32c6.js")).default;
       break;
     case "ESP32-C61":
-      jsonStub = await import("./targets/stub_flasher/stub_flasher_32c61.json");
+      jsonStub = (await import("./targets/stub_flasher/stub_flasher_32c61.js")).default;
       break;
     case "ESP32-H2":
-      jsonStub = await import("./targets/stub_flasher/stub_flasher_32h2.json");
+      jsonStub = (await import("./targets/stub_flasher/stub_flasher_32h2.js")).default;
       break;
     case "ESP32-P4":
-      jsonStub = await import("./targets/stub_flasher/stub_flasher_32p4.json");
+      jsonStub = (await import("./targets/stub_flasher/stub_flasher_32p4.js")).default;
       break;
     case "ESP32-S2":
-      jsonStub = await import("./targets/stub_flasher/stub_flasher_32s2.json");
+      jsonStub = (await import("./targets/stub_flasher/stub_flasher_32s2.js")).default;
       break;
     case "ESP32-S3":
-      jsonStub = await import("./targets/stub_flasher/stub_flasher_32s3.json");
+      jsonStub = (await import("./targets/stub_flasher/stub_flasher_32s3.js")).default;
       break;
     case "ESP8266":
-      jsonStub = await import("./targets/stub_flasher/stub_flasher_8266.json");
+      jsonStub = (await import("./targets/stub_flasher/stub_flasher_8266.js")).default;
       break;
   }
+
+  console.log(jsonStub);
 
   if (jsonStub) {
     return {
