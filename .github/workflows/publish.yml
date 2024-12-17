@@ -28,8 +28,8 @@ jobs:
       - name: Upload package file
         uses: actions/upload-artifact@v4
         with:
-          name: esptool-js-${{ steps.version.outputs.version }}.tgz
-          path: esptool-js-${{ steps.version.outputs.version }}.tgz
+          name: athombv-esptool-js-${{ steps.version.outputs.version }}.tgz
+          path: athombv-esptool-js-${{ steps.version.outputs.version }}.tgz
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1.0.0
@@ -56,8 +56,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./esptool-js-${{ steps.version.outputs.version }}.tgz
-          asset_name: esptool-js-${{ steps.version.outputs.version }}.tgz
+          asset_path: ./athombv-esptool-js-${{ steps.version.outputs.version }}.tgz
+          asset_name: athombv-esptool-js-${{ steps.version.outputs.version }}.tgz
           asset_content_type: application/zip
       - name: Publish package on NPM 📦
         run: npm publish
