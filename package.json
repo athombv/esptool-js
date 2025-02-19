@@ -23,10 +23,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/espressif/esptool-js.git"
+    "url": "https://github.com/athombv/esptool-js.git"
   },
   "bugs": {
-    "url": "https://github.com/espressif/esptool-js/issues"
+    "url": "https://github.com/athombv/esptool-js/issues"
   },
   "dependencies": {
     "atob-lite": "^2.0.0",
